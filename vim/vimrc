@@ -1,0 +1,83 @@
+let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ 'component': {
+      \   'readonly': '%{&readonly?"":""}',
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' }
+      \ }
+
+let g:ycm_semantic_triggers = {
+    \ 'rust' : ['.', '::'],
+    \ }
+
+let g:ycm_autoclose_preview_window_after_completion = 0
+let g:ycm_autoclose_preview_window_after_insertion = 1
+
+let g:ctrlp_working_path_mode = ''
+
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml"
+
+source "~.vim/vundles.vim"
+
+syntax enable
+
+hi link coffeeSpaceError NONE
+hi link lsSpaceError NONE
+
+"colorscheme base16-monokai
+"colorscheme heroku
+colorscheme jellybeans
+
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
+
+set autoread
+
+set softtabstop=4
+
+set shiftwidth=4
+set tabstop=4
+
+set hidden
+
+set expandtab
+
+set cino=N-s
+
+set gfn=Sauce\ Code\ Powerline\ 12
+"set gfn=Dejavu\ Sans\ Mono\ 12
+
+set guioptions-=m  "remove menu bar
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar
+set guioptions-=L  "remove left-hand scroll bar
+"set laststatus=2
+
+set nu
+set nowrap
+set splitbelow
+
+set shortmess+=A
+set incsearch
+
+set ignorecase
+set smartcase
+
+command! EditVimrc e ~/.vimrc
+command! ReloadVimrc so ~/.vimrc
+
+noremap ; :
+
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+noremap <Tab> :noh<CR>
+
+vmap r "_dP  
+
+augroup filetype
+    au BufRead,BufNewFile *.h   set filetype=c
+    au BufRead,BufNewFile *.rlisp set filetype=lisp 

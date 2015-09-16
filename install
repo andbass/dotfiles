@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+
+import util
+
+modules = util.load_modules(__file__)
+
+for module in modules:
+    try:
+        module.install()
+    except AttributeError:
+        print("In", module.__name__, "no install method is present.  Will still copy files over") 
+
+    print("Module installed:", module.__name__)
