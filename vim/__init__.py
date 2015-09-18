@@ -12,7 +12,6 @@ class Vim(dotfiles.Module):
 
     # You can set some files to be placed into other locations explictily and/or renamed
     # The path provided, if not absolute, is relative to the "default_dest"
-    # You can use valid Unix filename patterns thanks to "fnmatch", https://docs.python.org/3.5/library/fnmatch.html
     overriden_dests = {
         "vimrc": "~/.vimrc",
     }
