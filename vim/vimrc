@@ -18,7 +18,7 @@ let g:ctrlp_working_path_mode = ''
 
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml"
 
-source "~.vim/vundles.vim"
+source ~/.vim/vundles.vim
 
 syntax enable
 
