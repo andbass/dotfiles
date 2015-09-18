@@ -2,7 +2,7 @@
 Here's my personal dotfile configuration.  It's designed to be very easy to extend and modify.
 
 
-Before using, make sure the Python `sh` module is installed, `sudo pip3 install sh`.  Also, make sure you have Python3 installed.
+Before using, make sure the Python `sh` module is installed, `sudo pip install sh`.  Also, make sure you have Python3 installed.
 
 In essence, each directory is a Python module (with excpetion to the "lib" folder).
 Each module defines a class that extends from `dotfiles.Module`, and optionally overrides the `install` and `post_install` methods.
