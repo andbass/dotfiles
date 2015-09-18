@@ -31,8 +31,10 @@ class Vim(dotfiles.Module):
         yield self.install_plugins()
 
     def install_vundle(self):
-        return git.clone("https://github.com/VundleVim/Vundle.vim.git", 
+        git.clone("https://github.com/VundleVim/Vundle.vim.git", 
                   path.expanduser("~/.vim/bundle/Vundle.vim"))
+
+        return "Vundle has been downloaded successfully"
 
     def install_plugins(self):
         vim("+PluginInstall", "+qall")
