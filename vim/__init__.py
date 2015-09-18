@@ -2,6 +2,7 @@
 import dotfiles
 import sh
 
+from pathlib import Path
 from sh import git, vim
 from os import path
 
@@ -16,24 +17,22 @@ class Vim(dotfiles.Module):
         "vimrc": "~/.vimrc",
     }
 
-    # This function is called when dotfiles are installed (but not when updated)
+    # This function is called when dotfiles are installed
     def install(self):
-        try:
-            yield self.install_vundle()
-        except sh.ErrorReturnCode_128 as err:
-            if "already exists and is not an empty directory" in str(err.stderr): 
-                yield "Vundle has already been installed"
-            else:
-                raise err
+        yield self.install_vundle()
 
     def post_install(self):
         yield self.install_plugins()
 
     def install_vundle(self):
-        git.clone("https://github.com/VundleVim/Vundle.vim.git", 
-                  path.expanduser("~/.vim/bundle/Vundle.vim"))
+        vundle_dest = Path(path.expanduser("~/.vim/bundle/Vundle.vim"))
 
-        return "Vundle has been downloaded successfully"
+        if not vundle_dest.exists():
+            git.clone("https://github.com/VundleVim/Vundle.vim.git", str(vundle_dest))
+            return "Vundle has been downloaded successfully"
+        else:
+            git("-C", str(vundle_dest), "pull")
+            return "Vundle was already installed, it has been updated"
 
     def install_plugins(self):
         vim("+PluginInstall", "+qall")
