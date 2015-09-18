@@ -41,10 +41,12 @@ for i, module in enumerate(modules):
         else:
             dest_path /= path.name
    
+        abs_path = str(path.absolute())
+        abs_dest = str(dest_path.absolute())
         try:
-            shutil.os.symlink(str(path.absolute()), str(dest_path.absolute())) 
+            shutil.os.symlink(abs_path, abs_dest)
         except FileExistsError:
-            print(util.timestamp("File " + str(dest_path.absolute()) + " already exists.  Ignoring"))
+            print(util.timestamp("File " + abs_path + " already exists.  Ignoring"))
 
     print("Finalizing installation in module", module_name)
     for message in instance.post_install():
