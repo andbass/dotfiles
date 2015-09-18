@@ -14,6 +14,7 @@ def prepare_path(loc):
     """Appends the "dotfiles.py" file to the search path"""
     dotfiles_path = loc / "dotfiles.py"
     sys.path.append(str(dotfiles_path))
+    sys.path.append(str(dotfiles_path.parent / ".."))
 
 def load_modules(loc):
     """Loads each directory in given path as a Python module"""
@@ -22,7 +23,7 @@ def load_modules(loc):
     for module_path in paths:
         if module_path.is_dir():
             module_name = module_path.name
-            if module_name != "__pycache__":
+            if module_name != "__pycache__" and module_name != loc.parent:
                 importlib.import_module(module_name)
 
 def timestamp(message):
