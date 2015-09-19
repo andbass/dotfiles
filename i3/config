@@ -166,4 +166,3 @@ bar {
 exec feh --bg-scale ~/backgrounds/Sandstone.jpg
 exec redshift-gtk
 exec nm-applet
-exec xrandr --output HDMI1 --left-of eDP1 
