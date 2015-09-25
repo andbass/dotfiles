@@ -10,6 +10,14 @@ def initialize(loc):
     prepare_path(loc)
     load_modules(loc)
 
+    # Automate the installation of SH if it isn't installed
+    try:
+        import sh
+    except ImportError:
+        import pip
+        pip.main(["install", "sh"])
+
+
 def prepare_path(loc):
     """Appends the "dotfiles.py" file to the search path"""
     dotfiles_path = loc / "dotfiles.py"
