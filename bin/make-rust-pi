@@ -1,0 +1,3 @@
+#!/bin/sh
+${PWD}/configure --target=arm-unknown-linux-gnueabihf --prefix=$HOME/pi-rust
+make -j4 && make install

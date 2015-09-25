@@ -1,0 +1,4 @@
+
+file=$1
+
+scp target/arm-unknown-linux-gnueabihf/debug/$file pi@autohome.local:~

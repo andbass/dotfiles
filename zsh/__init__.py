@@ -1,5 +1,6 @@
 
 import dotfiles
+import os
 import sys
 
 class Zsh(dotfiles.Module):
@@ -10,5 +11,7 @@ class Zsh(dotfiles.Module):
 
     def install(self):
         dotfiles.process('sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"')
-
         yield "ZSH installed"
+
+        os.makedirs(os.path.expanduser("~/projects"), exist_ok=True)
+        yield "Created projects folder"

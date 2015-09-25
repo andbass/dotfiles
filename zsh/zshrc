@@ -50,6 +50,7 @@ ZSH_THEME="glen-magic"
 plugins=(git) 
 
 # User configuration
+export GOPATH=~/projects/go
 
 export PATH="/usr/lib64/qt-3.3/bin:/home/abass/.rvm/gems/ruby-2.2.0/bin:/home/abass/.rvm/gems/ruby-2.2.0@global/bin:/home/abass/.rvm/rubies/ruby-2.2.0/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/home/abass/.rvm/bin:/usr/local/bin:/usr/local/bin:/home/abass/.rvm/bin:/home/abass/.local/bin:/home/abass/bin:/usr/local/bin:/home/abass/.rvm/bin"
 export PATH=$PATH:/usr/local/bin
@@ -58,6 +59,7 @@ export PATH=$PATH:~/pi-tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian
 export PATH=$PATH:~/Android/Sdk/platform-tools
 export PATH=~/git/depot_tools:"$PATH"
 export PATH=~/.cabal/bin:"$PATH"
+export PATH=$PATH:$GOPATH/bin
 
 export RUST_SRC_PATH=~/git/rust/src
 export RUST_BACKTRACE=1

@@ -28,10 +28,12 @@ class Vim(dotfiles.Module):
         vundle_dest = Path(path.expanduser("~/.vim/bundle/Vundle.vim"))
 
         if not vundle_dest.exists():
-            git.clone("https://github.com/VundleVim/Vundle.vim.git", str(vundle_dest))
+            git.clone("https://github.com/VundleVim/Vundle.vim.git", str(vundle_dest), _out=print)
             return "Vundle has been downloaded successfully"
         else:
             git("-C", str(vundle_dest), "pull")
+            vim("+PluginUpdate", "+qall")
+
             return "Vundle was already installed, it has been updated"
 
     def install_plugins(self):

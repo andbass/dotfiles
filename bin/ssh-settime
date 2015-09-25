@@ -1,0 +1,30 @@
+#!/bin/bash
+#
+#   Sets the date at a remote host using the time from your system
+#
+#   ~/bin/ssh-set-date.bash 192.168.1.9
+
+# Host to set the date for
+declare HOST="${1:-salsa.local}";
+
+export TZ=UTC
+
+if [ "${HOST}" == "" ] || [ "${HOST}" == "-h" ] || [ "${HOST}" == "--help" ]; then
+  echo -e "
+Usage:
+  ${0} HOST|IP
+
+Where:
+  HOST|IP - The host name or IP address of the machine to set the date of.
+
+Examples:
+
+  ${0} salsa.local
+  ${0} 192.168.7.2   # For USB connected BeagleBone Black
+"
+  exit 1;
+fi
+
+declare cmd="ssh root@${HOST} TZ=UTC date $(date +%m%d%H%M%Y)";
+echo "Running: ${cmd}";
+eval "${cmd}";
