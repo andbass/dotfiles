@@ -19,7 +19,8 @@ Plugin 'octol/vim-cpp-enhanced-highlight'
 " Web dev
 Plugin 'othree/html5.vim'
 Plugin 'hail2u/vim-css3-syntax'
-Plugin 'jelera/vim-javascript-syntax'
+Plugin 'jason0x43/vim-js-indent'
+Plugin 'https://github.com/jelera/vim-javascript-syntax.git'
 Plugin 'gkz/vim-ls'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'alvan/vim-closetag'
@@ -36,8 +37,6 @@ Plugin 'digitaltoad/vim-jade'
 
 " Awesome color scheme
 Plugin 'nanotech/jellybeans.vim'
-
-Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
 filetype plugin indent on

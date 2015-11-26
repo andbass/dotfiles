@@ -110,4 +110,6 @@ alias ssh-pi='ssh pi@autohome.local'
 alias alsa=alsamixer
 alias chrome=google-chrome
 
+git config --global alias.todo 'grep -n -A3 TODO'
+
 source $HOME/.rvm/scripts/rvm
