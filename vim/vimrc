@@ -17,6 +17,7 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ctrlp_working_path_mode = ''
 
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml"
+let g:rainbow_active = 1 
 
 source ~/.vim/vundles.vim
 

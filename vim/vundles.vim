@@ -16,6 +16,10 @@ Plugin 'fatih/vim-go'
 
 Plugin 'octol/vim-cpp-enhanced-highlight'
 
+" Clojure
+Plugin 'tpope/vim-fireplace'
+Plugin 'luochen1990/rainbow'
+
 " Web dev
 Plugin 'othree/html5.vim'
 Plugin 'hail2u/vim-css3-syntax'
@@ -37,6 +41,8 @@ Plugin 'digitaltoad/vim-jade'
 
 " Awesome color scheme
 Plugin 'nanotech/jellybeans.vim'
+
+Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
 filetype plugin indent on
