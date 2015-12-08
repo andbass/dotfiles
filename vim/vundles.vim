@@ -43,6 +43,8 @@ Plugin 'digitaltoad/vim-jade'
 Plugin 'nanotech/jellybeans.vim'
 
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'keith/swift.vim'
+Plugin 'racer-rust/vim-racer'
 
 call vundle#end()
 filetype plugin indent on

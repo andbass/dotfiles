@@ -1,7 +1,7 @@
-LANG:=C++
-OUTPUT:=run
-LIBS:= -lclang
-FLAGS:= -g
+LANG := C++
+OUTPUT := scratchpad
+LIBS := 
+FLAGS := -g
 
 INCLUDE_DIR:= -I deps/*/include
 LIB_DIR:= -L deps/*/lib
@@ -30,23 +30,21 @@ build : $(OUTPUT) remove_unused_objects
 
 rebuild : clean build
 
+run : build
+	@./$(OUTPUT)
+
 install : build
 	@install ./$(OUTPUT) $(INSTALL_DIR)
-	@echo Install complete!
 
 uninstall :
 	-@rm $(INSTALL_DIR)/$(OUTPUT)
-	@echo Uninstall complete!
 
 $(OUTPUT): $(OBJ)
 	@$(CC) $^ -o $(OUTPUT) $(CFLAGS) $(LIB_DIR) $(LIBS)
-	@echo "Linking done. Compilation successful."
 
 obj/%.o : src/%.$(EXT) 
 	@mkdir -p $(@D) # $(@D) <- Gets directory part of target path
-	@if $(CC) $< -o $@ $(CFLAGS) -c -MMD -MP; then\
-		echo -e "Compiled `tput bold``tput setaf 3`$<`tput sgr0`.";\
-	fi
+	@$(CC) $< -o $@ $(CFLAGS) -c -MMD -MP
 
 -include $(DEP)
 
@@ -56,15 +54,11 @@ remove_unused_objects :
 ifneq '' '$(filter-out $(OBJ), $(FILES_IN_OBJ))' # finds out which object files no longer have an associated source file
 	@rm -r $(filter-out $(OBJ), $(FILES_IN_OBJ))
 	-@rm -r $(filter-out $(DEP), $(FILES_IN_OBJ:%.o=%.d))
-	@echo "Cleaned out unused .o and .dep files"
-else
-	@echo "No object files require deletion."
 endif
 	
 clean : 
 	@rm -r obj/*
 	@rm $(shell find . -name $(OUTPUT)*)
-	@echo "Cleaned out object files and binaries."
 
 debug :
 	@echo Language Selected: $(LANG)
