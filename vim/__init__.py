@@ -19,9 +19,11 @@ class Vim(dotfiles.Module):
 
     # This function is called when dotfiles are installed
     def install(self):
-        yield self.install_vundle()
+        pass
 
+    # This function is called after files are copied over
     def post_install(self):
+        yield self.install_vundle()
         yield self.install_plugins()
 
     def install_vundle(self):
@@ -32,8 +34,6 @@ class Vim(dotfiles.Module):
             return "Vundle has been downloaded successfully"
         else:
             git("-C", str(vundle_dest), "pull")
-            vim("+PluginUpdate", "+qall")
-
             return "Vundle was already installed, it has been updated"
 
     def install_plugins(self):
